@@ -1,0 +1,101 @@
+.npi_index {
+    .banner-wrapper {
+        position: relative;
+        .row {
+            margin: 0;
+            .form,
+            .banner {
+                position: relative;
+            }
+            .form {
+                padding-top: 30px;
+                .contact-head {
+                    text-align: center;
+                    font-size: $font-size-primary;
+                    font-weight: $font-weight-primary;
+                    color: $color-primary;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    line-height: inherit;
+                }
+                select:focus,
+                input:focus,
+                button:focus {
+                    box-shadow: none;
+                }
+            }
+            .banner {
+                position: relative;
+                padding: 0;
+                .banner-inner {
+                    position: relative;
+                    height: 500px;
+                    width: 100%;
+                    @media screen and (max-width: 768px) {
+                        height: 350px;
+                    }
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+    .section.city-wrapper {
+        border: double blue;
+        padding: 40px 0;
+        .city {
+            border: 1px solid gray;
+            display: grid;
+            border-radius: 5px;
+        }
+        .cities {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(auto, 1fr));
+            grid-template-rows: minmax(4, 300px);
+            grid-auto-flow: dense;
+            grid-gap: 15px;
+            height: 600px;
+        }
+        .cities_9 {
+            .city:nth-child(1) {
+                grid-column: span 1;
+                grid-row: span 2;
+            }
+            .city:nth-child(2) {
+                grid-column: span 1;
+                grid-row: span 3;
+            }
+            .city:nth-child(3) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            .city:nth-child(4) {
+                grid-column: span 1;
+                grid-row: span 2;
+            }
+            .city:nth-child(5) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            .city:nth-child(6) {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+            .city:nth-child(7) {
+                grid-column: span 1;
+                grid-row: span 2;
+            }
+            .city:nth-child(8) {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+            .city:nth-child(9) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+        }
+    }
+}

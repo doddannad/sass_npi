@@ -26,9 +26,12 @@
 
 // Search Nav
 .search-nav {
+    display: flex;
     padding: 15px 0;
-    box-shadow: 3px 3px 4px #44424273, -3px -3px 3px #fff;
+    box-shadow: 3px 3px 4px #44424273, -3px 3px 3px #fff;
     align-items: center;
+    position: relative;
+    z-index: 1;
     .search-nav-row {
         .search-nav-brand {
             .brand {

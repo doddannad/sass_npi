@@ -1,4 +1,17 @@
 $color-white: #fff;
 $color-primary: #091e42;
+$color-secondary: #6c757d;
 $color-red: #f23b3b;
 $nav-background: #00335a;
+%bg-center-cover-norepeat {
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+
+$font-size-primary: 18px;
+$font-size-secondary: 16px;
+$font-size-sub-primary-: 16px;
+$font-size--sub-secondary: 14px;
+$font-weight-primary: 700;
+$font-weight-secondary: 600;
