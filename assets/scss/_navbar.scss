@@ -27,15 +27,23 @@
 // Search Nav
 .search-nav {
     padding: 15px 0;
+    box-shadow: 3px 3px 4px #44424273, -3px -3px 3px #fff;
+    align-items: center;
     .search-nav-row {
         .search-nav-brand {
             .brand {
                 font-size: 1.2rem;
                 color: $color-primary;
                 font-weight: 700;
+                @media (max-width: 576px) {
+                    font-size: .8rem;
+                }
             }
             .text-muted {
                 font-weight: 600;
+                @media (max-width: 576px) {
+                    font-size: .7rem;
+                }
             }
         }
         .search-nav-link {
@@ -45,18 +53,14 @@
                 position: relative;
                 li {
                     width: 100%;
-                    a {
+                    text-align: center;
+                    a,
+                    i {
                         display: block;
                         font-size: 14px;
                         color: $color-red;
                         font-weight: 700;
-                        text-align: center;
                         position: relative;
-                        i {
-                            display: block;
-                            color: #00aeef;
-                            margin-top: 10px;
-                        }
                     }
                     a:after {
                         content: '';
@@ -66,11 +70,39 @@
                         background: rgba($color: #000000, $alpha: 0.1);
                         right: 0;
                         top: 5px;
+                        @media (max-width: 576px) {
+                            height: 10px;
+                        }
+                    }
+                    i {
+                        color: #00aeef;
+                        margin-top: 10px;
+                    }
+                    @media (max-width: 576px) {
+                        a {
+                            display: none;
+                        }
+                        i {
+                            color: $color-red;
+                            margin-top: 10px;
+                        }
+                        i:after {
+                            content: '';
+                            position: absolute;
+                            width: 1px;
+                            height: 15px;
+                            background: rgba($color: #000000, $alpha: 0.1);
+                            right: 0;
+                            top: 0px;
+                        }
                     }
                 }
             }
             li:last-child {
                 a:after {
+                    display: none;
+                }
+                i:after {
                     display: none;
                 }
             }
@@ -79,12 +111,18 @@
             @media (max-width: 992px) {
                 margin-top: 10px;
             }
+            @media (max-width: 576px) {
+                padding: 10px 5px;
+            }
             $radius-5: 5px;
             .city,
             .keyword,
             .button-wrap {
                 border: 1px solid #69727933;
-                padding: 5px 0;
+                padding: 0px 0;
+                @media (max-width: 576px) {
+                    padding: 0;
+                }
             }
             .city {
                 border-right: 0;
@@ -92,6 +130,9 @@
             }
             .keyword {
                 padding-left: 10px;
+                @media (max-width: 576px) {
+                    border-radius: 0 $radius-5 $radius-5 0;
+                }
                 .keyword_input {
                     padding-left: 35px;
                     background-repeat: no-repeat;
@@ -101,12 +142,19 @@
             .button-wrap {
                 background: #dc3545;
                 border-radius: 0 $radius-5 $radius-5 0;
+                @media (max-width: 576px) {
+                    margin-top: 10px;
+                    border-radius: $radius-5;
+                }
                 button {
                     background: none;
                     border-radius: 0;
                     font-size: 18px;
                     font-weight: 700;
                     border-radius: 0 $radius-5 $radius-5 0;
+                    @media (max-width: 576px) {
+                        border-radius: $radius-5
+                    }
                 }
             }
             input,
@@ -119,5 +167,6 @@
                 border: 0;
             }
         }
+        @media (max-width: 576px) {}
     }
 }
