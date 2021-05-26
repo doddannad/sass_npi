@@ -42,14 +42,28 @@
             }
         }
     }
-    .section.city-wrapper {
-        border: double blue;
+    .section {
+        border: double #0000ff;
         padding: 40px 0;
-        .city {
-            border: 1px solid gray;
-            display: grid;
-            border-radius: 5px;
+        position: relative;
+        .section-title {
+            position: relative;
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px 0;
+            .title {
+                font-size: 28px;
+                font-weight: 700;
+                text-transform: uppercase;
+                color: #091e42;
+                margin: 0;
+                padding: 0;
+                text-shadow: 2px 1px 4px #57559f59;
+                letter-spacing: 1px;
+            }
         }
+    }
+    .section.city-wrapper {
         .cities {
             position: relative;
             display: grid;
@@ -57,7 +71,70 @@
             grid-template-rows: minmax(4, 300px);
             grid-auto-flow: dense;
             grid-gap: 15px;
-            height: 600px;
+            height: 500px;
+            .city {
+                display: grid;
+                $br-5px: 5px;
+                border-radius: $br-5px;
+                position: relative;
+                @extend %bg-center-cover-norepeat;
+                a {
+                    text-decoration: none;
+                    display: block;
+                    .city-meta {
+                        position: absolute;
+                        top: 5%;
+                        left: 5%;
+                        z-index: 2;
+                    }
+                    .city-btn {
+                        color: #fff;
+                        font-size: 14px;
+                        font-weight: 600;
+                    }
+                    .city-btn:focus {
+                        box-shadow: none;
+                    }
+                    .city-caption {
+                        position: relative;
+                        z-index: 1;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        background: rgba(95, 95, 95, .8);
+                        color: #fff;
+                        height: 100%;
+                        opacity: 0;
+                        border-radius: $br-5px;
+                        .city-name {
+                            font-size: $font-size-secondary;
+                            font-weight: $font-weight-secondary;
+                            text-transform: uppercase;
+                            letter-spacing: .5px;
+                            text-shadow: 0px 4px 1px #0e11a64f;
+                            margin: 20px 0 10px;
+                        }
+                        .city-name::after {
+                            content: "";
+                            display: block;
+                            margin: 0 auto;
+                            width: 30%;
+                            padding-top: 10px;
+                            border-bottom: 2px solid $color-white;
+                            opacity: .8;
+                        }
+                    }
+                    .city-caption:hover {
+                        opacity: 1;
+                    }
+                }
+                .overlay {
+                    @extend %overlay;
+                    background: rgba($color: #000000, $alpha: .5);
+                    border-radius: $br-5px;
+                }
+            }
         }
         .cities_9 {
             .city:nth-child(1) {
@@ -97,5 +174,250 @@
                 grid-row: span 1;
             }
         }
+        .cities_8 {
+            .city:nth-child(1) {
+                grid-column: span 1;
+                grid-row: span 2;
+            }
+            .city:nth-child(2) {
+                grid-column: span 1;
+                grid-row: span 3;
+            }
+            .city:nth-child(3) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            .city:nth-child(4) {
+                grid-column: span 1;
+                grid-row: span 2;
+            }
+            .city:nth-child(5) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            .city:nth-child(6) {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+            .city:nth-child(7) {
+                grid-column: span 1;
+                grid-row: span 2;
+            }
+            .city:nth-child(8) {
+                grid-column: span 3;
+                grid-row: span 1;
+            }
+        }
+        .cities_7 {
+            .city:nth-child(1) {
+                grid-column: span 1;
+                grid-row: span 3;
+            }
+            .city:nth-child(2) {
+                grid-column: span 1;
+                grid-row: span 4;
+            }
+            .city:nth-child(3) {
+                grid-column: span 1;
+                grid-row: span 2;
+            }
+            .city:nth-child(4) {
+                grid-column: span 1;
+                grid-row: span 4;
+            }
+            .city:nth-child(5) {
+                grid-column: span 1;
+                grid-row: span 2;
+            }
+            .city:nth-child(6) {
+                grid-column: span 1;
+                grid-row: span 3;
+            }
+            .city:nth-child(7) {
+                grid-column: span 3;
+                grid-row: span 2;
+            }
+        }
+        .cities_6 {
+            height: 500px;
+            .city:nth-child(1) {
+                grid-column: span 1;
+                grid-row: span 3;
+            }
+            .city:nth-child(2) {
+                grid-column: span 1;
+                grid-row: span 4;
+            }
+            .city:nth-child(3) {
+                grid-column: span 2;
+                grid-row: span 2;
+            }
+            .city:nth-child(4) {
+                grid-column: span 2;
+                grid-row: span 2;
+            }
+            .city:nth-child(5) {
+                grid-column: span 1;
+                grid-row: span 3;
+            }
+            .city:nth-child(6) {
+                grid-column: span 3;
+                grid-row: span 2;
+            }
+        }
+        .cities_5 {
+            height: 500px;
+            .city:nth-child(1) {
+                grid-column: span 1;
+                grid-row: span 3;
+            }
+            .city:nth-child(2) {
+                grid-column: span 2;
+                grid-row: span 3;
+            }
+            .city:nth-child(3) {
+                grid-column: span 1;
+                grid-row: span 3;
+            }
+            .city:nth-child(4) {
+                grid-column: span 1;
+                grid-row: span 3;
+            }
+            .city:nth-child(5) {
+                grid-column: span 3;
+                grid-row: span 3;
+            }
+        }
+        .cities_4 {
+            height: 500px;
+            .city:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 3;
+            }
+            .city:nth-child(2) {
+                grid-column: span 2;
+                grid-row: span 3;
+            }
+            .city:nth-child(3) {
+                grid-column: span 2;
+                grid-row: span 3;
+            }
+            .city:nth-child(4) {
+                grid-column: span 2;
+                grid-row: span 3;
+            }
+        }
+        .cities_3 {
+            height: 400px;
+            .city:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 6;
+            }
+            .city:nth-child(2) {
+                grid-column: span 2;
+                grid-row: span 3;
+            }
+            .city:nth-child(3) {
+                grid-column: span 2;
+                grid-row: span 3;
+            }
+        }
+        .cities_2 {
+            height: 400px;
+            .city:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 4;
+            }
+            .city:nth-child(2) {
+                grid-column: span 2;
+                grid-row: span 4;
+            }
+            .city:nth-child(3) {
+                grid-column: span 2;
+                grid-row: span 3;
+            }
+        }
+        .cities_1 {
+            height: 400px;
+            .city:nth-child(1) {
+                grid-column: span 4;
+                grid-row: span 6;
+            }
+        }
+    }
+    .section.hot-projects {
+        $br-radius: 10px;
+        .hot-project-card {
+            position: relative;
+            padding: 20px;
+            .image {
+                @extend %bg-center-cover-norepeat;
+                position: relative;
+                height: 200px;
+                border-radius: $br-radius;
+                .overlay {
+                    @extend %overlay;
+                    background: rgba(0, 0, 0, 0.3);
+                    border-radius: $br-radius;
+                }
+            }
+            .detail {
+                position: relative;
+                padding: 15px 15px 0;
+                a {
+                    display: block;
+                    margin: 10px 0;
+                    .name {
+                        color: $color-red;
+                        font-size: $font-size-primary;
+                        font-weight: $font-weight-primary;
+                    }
+                    .location {
+                        color: $color-secondary;
+                        font-size: $font-size-sub-secondary;
+                        font-weight: $font-weight-secondary;
+                        margin: 0;
+                    }
+                }
+                .price-detail {
+                    padding: 10px 0;
+                    button {
+                        font-size: $font-size-sub-secondary;
+                        font-weight: $font-weight-secondary;
+                        i {
+                            margin-right: 5px;
+                        }
+                    }
+                    button.price,
+                    button.price:hover,
+                    button.price:focus {
+                        background: none;
+                        box-shadow: none;
+                        border: 0;
+                        color: $color-red;
+                    }
+                }
+            }
+        }
+        .hot-project-card::before {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #fff;
+            border-radius: $br-radius;
+            box-shadow: inset 20px 20px 60px #d5d3d375, inset -20px -20px 60px #e1dede7a;
+        }
+    }
+    .section.hot-projects::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: #fcf5f5;
     }
 }

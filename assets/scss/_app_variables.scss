@@ -9,9 +9,17 @@ $nav-background: #00335a;
     background-repeat: no-repeat !important;
 }
 
+%overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
 $font-size-primary: 18px;
 $font-size-secondary: 16px;
 $font-size-sub-primary-: 16px;
-$font-size--sub-secondary: 14px;
+$font-size-sub-secondary: 14px;
 $font-weight-primary: 700;
 $font-weight-secondary: 600;
