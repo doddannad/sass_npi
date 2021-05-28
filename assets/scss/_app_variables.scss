@@ -9,7 +9,7 @@ $nav-background: #00335a;
     background-repeat: no-repeat !important;
 }
 
-%overlay {
+%absolute {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -19,7 +19,57 @@ $nav-background: #00335a;
 
 $font-size-primary: 18px;
 $font-size-secondary: 16px;
-$font-size-sub-primary-: 16px;
+$font-size-sub-primary: 16px;
 $font-size-sub-secondary: 14px;
 $font-weight-primary: 700;
 $font-weight-secondary: 600;
+$br-radius: 10px;
+// media queries and widths
+$extra-small-and-down: 576px; // max-width
+$small-and-down: 767px; // max-width
+$medium-and-up: 768px; // max-width
+$medium-and-down: 992px; // max-width 
+$large-and-up: 993px; // min-width styles 
+$extra-large-and-up: 1200px; // min-width
+@media (max-width: $extra-small-and-down) {
+    // styles for extra small screens and down
+}
+
+@media (max-width: $small-and-down) {
+    // styles for small screens and down
+}
+
+// styles for medium screens and larger
+@media (min-width: $medium-and-up) {
+    // styles for medium screens and larger
+}
+
+@media (max-width: $medium-and-down) {
+    // styles for medium screens and down
+}
+
+@media (min-width: $large-and-up) {
+    // for large screens and up
+}
+
+@media (min-width: $extra-large-and-up) {
+    // styles for extra large screens and up
+}
+
+// view more wrapper 
+.view-more-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+    text-align: right;
+    .view-more-link {
+        color: $color-primary;
+        font-size: $font-size-secondary;
+        font-weight: $font-weight-secondary;
+        text-shadow: 0 0 $color-primary;
+        text-decoration: none;
+        letter-spacing: .5px;
+        i {
+            padding-left: 15px;
+        }
+    }
+}

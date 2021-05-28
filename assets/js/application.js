@@ -3,7 +3,7 @@ $(document).ready(function() {
     if (index_page.length > 0) {
         // index page related only
         console.log("Index Page");
-        $('.hot-projects-carousel').owlCarousel({
+        $('.3-2-1-carousel').owlCarousel({
             animateOut: 'slideOutDown',
             animateIn: 'flipInX',
             loop: true,
@@ -19,6 +19,26 @@ $(document).ready(function() {
                 },
                 1000: {
                     items: 3,
+                    dots: true
+                }
+            }
+        })
+        $('.5-3-2-carousel').owlCarousel({
+            animateOut: 'slideOutDown',
+            animateIn: 'flipInX',
+            loop: true,
+            autoplay: true,
+            margin: 20,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 2
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 4,
                     dots: true
                 }
             }
