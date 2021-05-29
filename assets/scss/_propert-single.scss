@@ -1,0 +1,97 @@
+.property-single {
+    .search-nav {
+        box-shadow: none;
+        border-bottom: 1px solid cornsilk;
+    }
+    .property-heading-wrapper {
+        padding: 15px 0;
+        .name {
+            font-size: 2rem;
+            font-weight: 700;
+            text-shadow: 0 0 $color-black;
+            letter-spacing: 1px;
+        }
+        .loc-price {
+            display: flex;
+            justify-content: space-between;
+            .location,
+            .price {
+                font-size: 1rem;
+                font-weight: 600;
+                letter-spacing: 1px;
+                padding: 5px 0;
+            }
+            .location {
+                color: $color-secondary;
+                text-shadow: 0 0 $color-secondary;
+                i {
+                    padding-right: 10px;
+                }
+            }
+            .price {
+                color: $color-red;
+                text-shadow: 0 0 $color-red;
+                i {
+                    padding-right: 5px;
+                }
+            }
+        }
+    }
+    .section.property-banner {
+        padding: 0;
+        .row {
+            margin: 0;
+            .banner-wrapper {
+                .banner {
+                    position: relative;
+                    height: 500px;
+                    img {
+                        height: 100%;
+                        width: 100%;
+                    }
+                    .overlay {
+                        @extend %absolute;
+                        background: rgba($color: #000000, $alpha: .3);
+                    }
+                }
+            }
+            .form-wrapper {
+                background: #fff;
+                padding: 15px 20px;
+                .form-head {
+                    margin: 15px 0 30px;
+                    display: flex;
+                    align-items: center;
+                    .form-media {
+                        .image {
+                            display: block;
+                            height: 80px;
+                            width: 80px;
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                border-radius: 50%;
+                            }
+                        }
+                        h5,
+                        p {
+                            i {
+                                padding-right: 10px;
+                            }
+                        }
+                        h5 {
+                            font-size: $font-size-secondary;
+                            font-weight: $font-weight-secondary;
+                        }
+                        p {
+                            color: #007bff;
+                        }
+                    }
+                    .form-media:first-child {
+                        padding-right: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

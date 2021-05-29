@@ -44,4 +44,23 @@ $(document).ready(function() {
             }
         })
     }
+    proper_listing = $('.property-listing');
+    if (proper_listing.length > 0) {
+        $('.carousel-single').owlCarousel({
+            loop: true,
+            autoplay: true,
+            margin: 10,
+            items: 1
+        })
+    }
+    proper_single = $('.property-single');
+    if (proper_single.length > 0) {
+        $('.carousel-single').owlCarousel({
+            loop: true,
+            autoplay: true,
+            margin: 10,
+            items: 1
+        })
+    }
+
 });

@@ -42,26 +42,7 @@
             }
         }
     }
-    .section {
-        padding: 40px 0;
-        position: relative;
-        .section-title {
-            position: relative;
-            text-align: center;
-            margin: 0 0 40px;
-            .title {
-                font-size: 28px;
-                font-weight: 700;
-                text-transform: uppercase;
-                color: #091e42;
-                margin: 0;
-                padding: 0;
-                text-shadow: 2px 1px 4px #57559f59;
-                letter-spacing: 1px;
-            }
-        }
-    }
-    .section.city-wrapper {
+    .city-wrapper {
         .cities {
             position: relative;
             display: grid;
@@ -343,73 +324,10 @@
             }
         }
     }
-    .section.hot-projects {
-        .hot-project-card {
-            position: relative;
-            padding: 20px;
-            margin-bottom: 10px;
-            .image {
-                @extend %bg-center-cover-norepeat;
-                position: relative;
-                height: 200px;
-                border-radius: $br-radius;
-                .overlay {
-                    @extend %absolute;
-                    background: rgba(0, 0, 0, 0.3);
-                    border-radius: $br-radius;
-                }
-            }
-            .detail {
-                position: relative;
-                padding: 15px 15px 0;
-                a {
-                    display: block;
-                    margin: 10px 0;
-                    .name {
-                        color: $color-red;
-                        font-size: $font-size-primary;
-                        font-weight: $font-weight-primary;
-                    }
-                    .location {
-                        color: $color-secondary;
-                        font-size: $font-size-sub-secondary;
-                        font-weight: $font-weight-secondary;
-                        margin: 0;
-                    }
-                }
-                .price-detail {
-                    padding: 10px 0;
-                    button {
-                        font-size: $font-size-sub-secondary;
-                        font-weight: $font-weight-secondary;
-                        i {
-                            margin-right: 5px;
-                        }
-                    }
-                    button.price,
-                    button.price:hover,
-                    button.price:focus {
-                        background: none;
-                        box-shadow: none;
-                        border: 0;
-                        color: $color-red;
-                    }
-                }
-            }
-        }
-        .hot-project-card::before {
-            content: '';
-            position: absolute;
-            top: 30%;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: #fff;
-            border-radius: $br-radius;
-            box-shadow: 0px 1px 3px rgba(0, 0, 0, .3);
-        }
+    .hot-projects {
+        @extend %hot-projects-card;
     }
-    .section.project-collection {
+    .project-collection {
         position: relative;
         white-space: nowrap;
         .collections {
@@ -467,7 +385,7 @@
             }
         }
     }
-    .section.hot-projects::before {
+    .hot-projects::before {
         content: '';
         position: absolute;
         top: 0;
@@ -476,65 +394,17 @@
         left: 0;
         background: #fcf5f5;
     }
-    .section.latest-projects {
+    .latest-projects {
         position: relative;
-        .latest-project-card {
-            position: relative;
-            .image {
-                position: relative;
-                height: 250px;
-                @extend %bg-center-cover-norepeat;
-                .overlay {
-                    @extend %absolute;
-                    background: rgba($color: #000000, $alpha: .6);
-                }
-                .caption {
-                    position: relative;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    height: 100%;
-                    color: #fff;
-                    text-align: center;
-                    letter-spacing: 1px;
-                    .name {
-                        padding: 0 0 15px;
-                        position: relative;
-                        font-size: $font-size-secondary;
-                        font-weight: $font-weight-secondary;
-                    }
-                    .name:after {
-                        @extend %absolute;
-                        content: '';
-                        background: #fff;
-                        width: 25%;
-                        height: 2px;
-                        top: auto;
-                        bottom: 0;
-                        margin: 0 auto;
-                    }
-                    .location {
-                        color: #eee;
-                        font-size: $font-size-sub-secondary;
-                        font-weight: $font-weight-secondary;
-                        margin: 0;
-                    }
-                }
-            }
-            .image,
-            .overlay {
-                border-radius: $br-radius;
-            }
-        }
+        @extend %latest-projects-card;
     }
-    .section.latest-projects::before {
+    .latest-projects::before {
         content: '';
         @extend %absolute;
         top: 50%;
         background: #fcf5f5;
     }
-    .section.trending-article {
+    .trending-article {
         position: relative;
         .article-card {
             position: relative;
@@ -612,13 +482,13 @@
             box-shadow: 0px 1px 3px rgba(0, 0, 0, .3);
         }
     }
-    .section.trending-article::before {
+    .trending-article::before {
         content: '';
         @extend %absolute;
         top: 50%;
         background: #f1f9f9;
     }
-    .section.our-partners {
+    .our-partners {
         position: relative;
         .partners-card {
             position: relative;
@@ -644,7 +514,7 @@
             }
         }
     }
-    .section.our-partners::before {
+    .our-partners::before {
         content: '';
         @extend %absolute;
         bottom: 40%;

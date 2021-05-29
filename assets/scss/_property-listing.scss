@@ -1,0 +1,166 @@
+.property-listing {
+    .search-nav {
+        box-shadow: 3px 3px 4px #44424273, -3px 3px 3px rgba(0, 0, 0, .3);
+    }
+    .hero-wrapper {
+        position: relative;
+        margin-top: 0px;
+        .hero {
+            position: relative;
+            height: 300px;
+            @media (max-width: $medium-and-down) {
+                height: 250px;
+            }
+            @extend %bg-center-cover-norepeat;
+            .overlay {
+                @extend %absolute;
+                background: rgba($color: #000000, $alpha: 0.6);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .hero-caption {
+                    color: $color-white;
+                    .title,
+                    .sub-title {
+                        text-align: center;
+                        text-shadow: 0 0 $color-white;
+                        letter-spacing: 1px;
+                    }
+                    .title {
+                        font-size: 28px;
+                        font-weight: 700;
+                        padding-bottom: 15px;
+                        margin-bottom: 20px;
+                        border-bottom: 1px solid rgba($color: #ffffff, $alpha: .8);
+                    }
+                    .sub-title {
+                        font-size: 22px;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+    .section.listing {
+        border: 2px solid blue;
+        .row {
+            padding: 10px 0;
+            .listing-sub,
+            .listing-main {
+                .contact-head {
+                    text-align: center;
+                    font-size: $font-size-primary;
+                    font-weight: $font-weight-primary;
+                    color: $color-primary;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    line-height: inherit;
+                }
+                .form {
+                    select:focus,
+                    input:focus,
+                    button:focus {
+                        box-shadow: none;
+                    }
+                }
+            }
+            .listing-sub aside {
+                .hot-projects {
+                    @extend %hot-projects-card;
+                    .hot-project-card {
+                        padding: 20px 5px;
+                    }
+                }
+                .latest-projects {
+                    @extend %latest-projects-card;
+                }
+                .hot-projects,
+                .latest-projects {
+                    .image {
+                        height: 200px !important;
+                    }
+                }
+            }
+            .listing-main {
+                .project-listing-grid {
+                    display: grid;
+                    grid-gap: 20px;
+                    grid-template-columns: repeat(3, minmax(auto, 1fr));
+                    @media(max-width: $medium-and-down) {
+                        grid-template-columns: repeat(2, minmax(auto, 1fr));
+                        @media(max-width: $extra-small-and-down) {
+                            grid-template-columns: repeat(1, minmax(auto, 1fr));
+                        }
+                    }
+                    .projects {
+                        position: relative;
+                        border-radius: $br-radius;
+                        box-shadow: 1px 1px 2px rgba($color: #000000, $alpha: .3), -1px -1px 2px rgba($color: #000000, $alpha: .3);
+                        padding: 10px;
+                        .image {
+                            position: relative;
+                            @extend %bg-center-cover-norepeat;
+                            height: 220px;
+                            margin-bottom: 15px;
+                            .overlay {
+                                @extend %absolute;
+                                background: rgba($color: #000000, $alpha: .5);
+                            }
+                        }
+                        .image,
+                        .overlay {
+                            border-radius: $br-radius;
+                        }
+                        .projects-deatil {
+                            padding: 0 10px;
+                            .head {
+                                margin-bottom: 15px;
+                                .name {
+                                    color: $color-black;
+                                    text-shadow: 0 0 $color-black;
+                                    font-size: $font-size-primary;
+                                    font-weight: $font-weight-primary;
+                                }
+                                .location {
+                                    color: $color-secondary;
+                                    text-shadow: 0 0 $color-secondary;
+                                    font-size: 12px;
+                                    font-weight: $font-weight-secondary;
+                                    i {
+                                        padding-right: 10px;
+                                    }
+                                }
+                            }
+                            .body {
+                                ul {
+                                    position: relative;
+                                    margin: 0;
+                                    padding: 0;
+                                    list-style: none;
+                                    li {
+                                        display: flex;
+                                        flex-direction: row;
+                                        justify-content: space-between;
+                                        align-items: baseline;
+                                        padding: 10px 0;
+                                        color: $color-secondary;
+                                        text-shadow: 0 0 $color-secondary;
+                                        font-size: $font-size-sub-secondary;
+                                        font-weight: $font-weight-secondary;
+                                    }
+                                    li:not(:last-child) {
+                                        margin-bottom: 10px;
+                                        border-bottom: 1px dashed rgba($color: #f71e1e, $alpha: .1);
+                                    }
+                                    li:last-child {
+                                        padding: 10px 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
