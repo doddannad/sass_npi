@@ -37,14 +37,14 @@
             }
         }
     }
-    .section.property-banner {
+    .property-banner {
         padding: 0;
         .row {
             margin: 0;
             .banner-wrapper {
                 .banner {
                     position: relative;
-                    height: 500px;
+                    height: 450px;
                     img {
                         height: 100%;
                         width: 100%;
@@ -92,6 +92,225 @@
                     }
                 }
             }
+        }
+    }
+    .property-body {
+        border: double blue;
+        padding: 20px 0;
+        .property-cards {
+            $card-heading-font-size: 24px;
+            $card-heading-font-weight: 600;
+            $card-color: #4a4a4a;
+            $card-font-primary: 16px;
+            $card-font-secondary: 14px;
+            $card-font-weight-primary: 500;
+            $card-font-weight-secondary: 400;
+            padding: 20px 30px;
+            background: #fff;
+            box-shadow: 0 0 6px rgba(0, 0, 0, .15);
+            .property-card-heading {
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+                border-bottom: 1px solid #c1c1;
+                .heading {
+                    font-size: $card-heading-font-size;
+                    font-weight: $card-heading-font-weight;
+                    color: $card-color;
+                    text-shadow: 0 0 $card-color;
+                }
+            }
+            .property-card-body {
+                p {
+                    font-size: $card-font-primary;
+                    font-weight: $card-font-weight-primary;
+                    margin: 0;
+                    text-align: justify;
+                }
+                .summary-wrapper {
+                    position: relative;
+                    display: flex;
+                    overflow-x: auto;
+                    white-space: nowrap;
+                    .summary-box {
+                        position: relative;
+                        padding: 10px 0;
+                        width: 100%;
+                        .summary-item {
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            padding-bottom: 10px;
+                            .name,
+                            .value {
+                                color: $card-color;
+                            }
+                            .name {
+                                font-size: $card-font-primary;
+                                font-weight: 600;
+                            }
+                            .value {
+                                font-size: $card-font-secondary;
+                                font-weight: 600;
+                            }
+                        }
+                        .summary-item:not(:last-child) {
+                            margin-bottom: 10px;
+                            border-bottom: 1px solid #c1c1;
+                        }
+                        // Address
+                        .summary-item.address,
+                        .summary-item.additional {
+                            justify-content: start;
+                            align-items: baseline;
+                            .value {
+                                padding-left: 15px;
+                            }
+                        }
+                    }
+                    .summary-box::before {
+                        position: absolute;
+                        content: '';
+                        top: 25%;
+                        left: 0;
+                        width: 1px;
+                        height: 50%;
+                        background: #c1c1;
+                    }
+                    .summary-box:first-child::before {
+                        display: none;
+                    }
+                    .summary-box:first-child {
+                        padding-right: 20px;
+                    }
+                    .summary-box:last-child {
+                        padding-left: 20px;
+                    }
+                }
+                .master-plan-wrapper {
+                    display: flex;
+                    align-items: start;
+                    @media(max-width: $small-and-down) {
+                        flex-direction: column;
+                    }
+                    .tab-button {
+                        padding-right: 15px;
+                        width: 20%;
+                        flex-direction: column;
+                        @media(max-width: $small-and-down) {
+                            flex-direction: row;
+                            width: 100%;
+                            align-items: baseline;
+                            margin-bottom: 10px;
+                            padding: 0;
+                            @media(max-width: $extra-small-and-down) {
+                                overflow-x: scroll;
+                                white-space: nowrap;
+                                display: block ruby;
+                            }
+                        }
+                        button {
+                            font-size: $card-font-primary;
+                            font-weight: 600;
+                        }
+                        button:not(:last-child) {
+                            margin-bottom: 10px;
+                        }
+                    }
+                    .tab-content {
+                        width: 80%;
+                        padding-left: 15px;
+                        @media(max-width: $small-and-down) {
+                            width: 100%;
+                            padding: 0;
+                        }
+                        .master-plan-head-ul {
+                            list-style: none;
+                            display: flex;
+                            align-items: start;
+                            justify-content: space-between;
+                            margin: 0;
+                            padding-bottom: 20px;
+                            li {
+                                font-size: $card-font-primary;
+                                font-weight: 600;
+                                .value {
+                                    font-weight: 700;
+                                    padding-left: 10px;
+                                }
+                                @media(max-width: $extra-small-and-down) {
+                                    font-size: $card-font-secondary;
+                                    .value {
+                                        font-size: $card-font-secondary;
+                                    }
+                                }
+                            }
+                        }
+                        .master-body {
+                            display: flex;
+                            align-items: center;
+                            .image {
+                                position: relative;
+                                height: 300px;
+                                width: 100%;
+                                @media(max-width: $small-and-down) {
+                                    height: 200px;
+                                }
+                                img {
+                                    height: 100%;
+                                    width: 100%;
+                                }
+                                .overlay {
+                                    @extend %absolute;
+                                    background: rgba(74, 74, 74, 0.9);
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    button {
+                                        font-size: $card-font-primary;
+                                        font-weight: 600;
+                                        text-shadow: 0 0 #fff;
+                                    }
+                                }
+                            }
+                            .image,
+                            img,
+                            .overlay {
+                                border-radius: $br-radius;
+                            }
+                        }
+                    }
+                }
+                .spec-feature-wrapper {
+                    border: 2px solid blue;
+                    padding: 20px 0;
+                    display: flex;
+                    .feature-box {
+                        padding: 10px 0;
+                        border: double red;
+                        width: 100%;
+                    }
+                }
+                // side
+                .hot-projects {
+                    @extend %hot-projects-card;
+                    .hot-project-card {
+                        padding: 20px 5px;
+                    }
+                }
+                .latest-projects {
+                    @extend %latest-projects-card;
+                }
+                .hot-projects,
+                .latest-projects {
+                    .image {
+                        height: 200px !important;
+                    }
+                }
+                // ./side
+            }
+        }
+        .property-cards+.property-cards {
+            margin-top: 20px;
         }
     }
 }
