@@ -147,7 +147,7 @@ while ($row = mysqli_fetch_array($select_price)) {
 $selectRelatedProjects = mysqli_query($db_connect, "
   SELECT *
   FROM project_detail AS pd,builders_list AS bl,country AS cr,state AS st,city AS ct,area AS ar,unit_types AS ut,property_types AS pt,property_status AS ps
-  WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND ct.city_id='$cityId' AND pd.builders_id='$buildersId' AND pd.project_id!='$projectId' ORDER BY RAND()  ");
+  WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND ct.city_id='$cityId' AND pd.builders_id = '$buildersId' AND pd.project_id!='$projectId' ORDER BY RAND()  ");
 
 $relatedBuilderArray = array();
 while ($row = mysqli_fetch_array($selectRelatedProjects)) {
@@ -159,7 +159,7 @@ while ($row = mysqli_fetch_array($selectRelatedProjects)) {
 $selectRelatedProjects = mysqli_query($db_connect, "
   SELECT *
   FROM project_detail AS pd,builders_list AS bl,country AS cr,state AS st,city AS ct,area AS ar,unit_types AS ut,property_types AS pt,property_status AS ps
-  WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND ct.city_id='$cityId' AND pd.builders_id='$buildersId' AND pd.project_id!='$projectId' AND ar.area_id = '$areaId' ORDER BY RAND()  ");
+  WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND ct.city_id='$cityId' AND pd.project_id!='$projectId' AND ar.area_id = '$areaId' ORDER BY RAND()  ");
 
 $relatedPropertyArray = array();
 while ($row = mysqli_fetch_array($selectRelatedProjects)) {
@@ -172,7 +172,7 @@ while ($row = mysqli_fetch_array($selectRelatedProjects)) {
 $bhkPropTypes = mysqli_query($db_connect, "
   SELECT pt.property_types_name, pt.property_types_url, br.bed_rooms_name, br.bed_rooms_url, ct.city_name, ct.city_url
   FROM project_detail AS pd, city AS ct, property_types AS pt, bed_rooms AS br
-  WHERE pd.property_types_id=pt.property_types_id AND pd.city_id=ct.city_id AND pd.city_id='$cityId' AND pd.builders_id='$buildersId' AND pt.property_types_name!='Plot' GROUP BY pt.property_types_name, br.bed_rooms_name ORDER BY pt.property_types_id, br.bed_rooms_id ");
+  WHERE pd.property_types_id=pt.property_types_id AND pd.city_id=ct.city_id AND pd.city_id='$cityId' AND pt.property_types_name!='Plot' GROUP BY pt.property_types_name, br.bed_rooms_name ORDER BY pt.property_types_id, br.bed_rooms_id ");
 $bhkPropTypesArray = array();
 while ($row = mysqli_fetch_array($bhkPropTypes)) {
   $bhkPropTypesArray[] = $row;
@@ -182,14 +182,14 @@ while ($row = mysqli_fetch_array($bhkPropTypes)) {
 // -----Property Types & Status----
 $propertyTypes1 = mysqli_query($db_connect, "SELECT pt.property_types_name, pt.property_types_url, st.state_name, ct.city_name, ct.city_url
   FROM project_detail AS pd,property_types AS pt, state AS st, city AS ct
-  WHERE pd.property_types_id=pt.property_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND ct.city_name='$cityName' AND pd.builders_id='$buildersId' GROUP BY pt.property_types_name ");
+  WHERE pd.property_types_id=pt.property_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND ct.city_name='$cityName' GROUP BY pt.property_types_name ");
 $propertyTypesArray1 = array();
 while ($row = mysqli_fetch_array($propertyTypes1)) {
   $propertyTypesArray1[] = $row;
 }
 $propertyStatus1 = mysqli_query($db_connect, "SELECT ps.property_status_name, ps.property_status_url, st.state_name, ct.city_name, ct.city_url
   FROM project_detail AS pd, property_status AS ps, state AS st, city AS ct
-  WHERE pd.property_status_id=ps.property_status_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND ct.city_name='$cityName' AND pd.builders_id='$buildersId' GROUP BY ps.property_status_name ");
+  WHERE pd.property_status_id=ps.property_status_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND ct.city_name='$cityName' GROUP BY ps.property_status_name ");
 $propertyStatusArray1 = array();
 while ($row = mysqli_fetch_array($propertyStatus1)) {
   $propertyStatusArray1[] = $row;
@@ -200,7 +200,7 @@ while ($row = mysqli_fetch_array($propertyStatus1)) {
 $select_bed_rooms = mysqli_query($db_connect, "
   SELECT br.bed_rooms_name, ct.city_name, br.bed_rooms_url, ct.city_url
   FROM project_detail AS pd, bed_rooms AS br, unit_configuration AS uc, city AS ct
-  WHERE pd.project_id=uc.project_id AND br.bed_rooms_id=uc.unit_types_id AND pd.city_id=ct.city_id AND ct.city_name='$cityName' AND pd.builders_id='$buildersId' GROUP BY br.bed_rooms_name ORDER BY bed_rooms_id ASC");
+  WHERE pd.project_id=uc.project_id AND br.bed_rooms_id=uc.unit_types_id AND pd.city_id=ct.city_id AND ct.city_name='$cityName'  GROUP BY br.bed_rooms_name ORDER BY bed_rooms_id ASC");
 $bedRoomsArray1 = array();
 while ($row = mysqli_fetch_array($select_bed_rooms)) {
   $bedRoomsArray1[] = $row;

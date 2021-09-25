@@ -20,7 +20,7 @@ if (!empty($url1 && $url2)) {
   $countDoubleUrlProjects = mysqli_query($db_connect, "
   SELECT count(pd.project_id) AS countProjects
   FROM project_detail AS pd, builders_list AS bl, country AS cr, state AS st, city AS ct, area AS ar, unit_configuration AS uc, bed_rooms AS br , property_types AS pt, property_status AS ps
-  WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND pd.project_id=uc.project_id AND uc.unit_types_id=br.bed_rooms_id AND ct.city_url='$url1' AND br.bed_rooms_url='$url2' AND pd.builders_id = '$builders_id' ");
+  WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND pd.project_id=uc.project_id AND uc.unit_types_id=br.bed_rooms_id AND ct.city_url='$url1' AND br.bed_rooms_url='$url2' ");
   while ($row = mysqli_fetch_array($countDoubleUrlProjects)) {
     $noOfProjects = $row['countProjects'];
     $totalPages = ceil($noOfProjects / $limit_per_page);
@@ -30,7 +30,7 @@ if (!empty($url1 && $url2)) {
   $selectDoubleUrlProjects = mysqli_query($db_connect, "
     SELECT *
     FROM project_detail AS pd, builders_list AS bl, country AS cr, state AS st, city AS ct, area AS ar, unit_types AS ut, property_types AS pt, property_status AS ps, unit_configuration AS uc, bed_rooms AS br
-    WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND pd.project_id=uc.project_id AND uc.unit_types_id=br.bed_rooms_id AND ct.city_url='$url1' AND br.bed_rooms_url='$url2' AND pd.builders_id = '$builders_id' ORDER BY project_name ASC LIMIT $starting_from , $limit_per_page ");
+    WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND pd.project_id=uc.project_id AND uc.unit_types_id=br.bed_rooms_id AND ct.city_url='$url1' AND br.bed_rooms_url='$url2' ORDER BY project_name ASC LIMIT $starting_from , $limit_per_page ");
   if (mysqli_num_rows($selectDoubleUrlProjects) >= 1) {
     $resultArray = array();
     while ($row = mysqli_fetch_array($selectDoubleUrlProjects)) {
@@ -97,7 +97,7 @@ if (!empty($url1 && $url2)) {
     $countDoubleUrlProjects = mysqli_query($db_connect, "
       SELECT count(pd.project_id) AS countProjects
       FROM project_detail AS pd, builders_list AS bl, country AS cr, state AS st, city AS ct, area AS ar, property_types AS pt, property_status AS ps
-      WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND ct.city_url='$url1' AND pt.property_types_url='$url2' AND pd.builders_id = '$builders_id' ");
+      WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND ct.city_url='$url1' AND pt.property_types_url='$url2' ");
     while ($row = mysqli_fetch_array($countDoubleUrlProjects)) {
       $noOfProjects = $row['countProjects'];
       $totalPages = ceil($noOfProjects / $limit_per_page);
@@ -107,7 +107,7 @@ if (!empty($url1 && $url2)) {
     $selectDoubleUrlProjects = mysqli_query($db_connect, "
       SELECT *
       FROM project_detail AS pd, builders_list AS bl, country AS cr, state AS st, city AS ct, area AS ar, unit_types AS ut, property_types AS pt, property_status AS ps
-      WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND ct.city_url='$url1' AND pt.property_types_url='$url2' AND pd.builders_id = '$builders_id' ORDER BY project_name ASC LIMIT $starting_from , $limit_per_page ");
+      WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND ct.city_url='$url1' AND pt.property_types_url='$url2' ORDER BY project_name ASC LIMIT $starting_from , $limit_per_page ");
     if (mysqli_num_rows($selectDoubleUrlProjects) >= 1) {
       $resultArray = array();
       while ($row = mysqli_fetch_array($selectDoubleUrlProjects)) {
@@ -175,7 +175,7 @@ if (!empty($url1 && $url2)) {
       $countDoubleUrlProjects = mysqli_query($db_connect, "
         SELECT count(pd.project_id) AS countProjects
         FROM project_detail AS pd, builders_list AS bl, country AS cr, state AS st, city AS ct, area AS ar, property_types AS pt, property_status AS ps
-        WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND ct.city_url='$url1' AND ps.property_status_url='$url2' AND pd.builders_id = '$builders_id' ");
+        WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND ct.city_url='$url1' AND ps.property_status_url='$url2' ");
       while ($row = mysqli_fetch_array($countDoubleUrlProjects)) {
         $noOfProjects = $row['countProjects'];
         $totalPages = ceil($noOfProjects / $limit_per_page);
@@ -185,7 +185,7 @@ if (!empty($url1 && $url2)) {
       $selectDoubleUrlProjects = mysqli_query($db_connect, "
         SELECT *
         FROM project_detail AS pd, builders_list AS bl, country AS cr, state AS st, city AS ct, area AS ar, unit_types AS ut, property_types AS pt, property_status AS ps
-        WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND ct.city_url='$url1' AND ps.property_status_url='$url2' AND pd.builders_id = '$builders_id' ORDER BY project_name ASC LIMIT $starting_from , $limit_per_page ");
+        WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND ct.city_url='$url1' AND ps.property_status_url='$url2' ORDER BY project_name ASC LIMIT $starting_from , $limit_per_page ");
       if (mysqli_num_rows($selectDoubleUrlProjects) >= 1) {
         $resultArray = array();
         while ($row = mysqli_fetch_array($selectDoubleUrlProjects)) {
@@ -251,7 +251,7 @@ if (!empty($url1 && $url2)) {
         $countDoubleUrlProjects = mysqli_query($db_connect, "
         SELECT count(pd.project_id) AS countProjects
         FROM project_detail AS pd, builders_list AS bl, country AS cr, state AS st, city AS ct, area AS ar, property_types AS pt, property_status AS ps
-        WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND ct.city_url='$url1' AND ar.area_url='$url2' AND pd.builders_id = '$builders_id' ");
+        WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND ct.city_url='$url1' AND ar.area_url='$url2' ");
         while ($row = mysqli_fetch_array($countDoubleUrlProjects)) {
           $noOfProjects = $row['countProjects'];
           $totalPages = ceil($noOfProjects / $limit_per_page);
@@ -261,7 +261,7 @@ if (!empty($url1 && $url2)) {
         $selectDoubleUrlProjects = mysqli_query($db_connect, "
         SELECT *
         FROM project_detail AS pd, builders_list AS bl, country AS cr, state AS st, city AS ct, area AS ar, unit_types AS ut, property_types AS pt, property_status AS ps
-        WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND ct.city_url='$url1' AND ar.area_url='$url2' AND pd.builders_id = '$builders_id' ORDER BY project_name ASC LIMIT $starting_from , $limit_per_page ");
+        WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND ct.city_url='$url1' AND ar.area_url='$url2' ORDER BY project_name ASC LIMIT $starting_from , $limit_per_page ");
 
         if (mysqli_num_rows($selectDoubleUrlProjects) >= 1) {
           $resultArray = array();
@@ -286,9 +286,9 @@ while ($row = mysqli_fetch_array($fetchCityWithArea)) {
 }
 // ---  End city With area Footer ---
 
-// ct.city_url='$url1' AND br.bed_rooms_url='$url2' AND pd.builders_id = '$builders_id'------done---------
-// ct.city_url='$url1' AND pt.property_types_url='$url2' AND pd.builders_id = '$builders_id'
-// ct.city_url='$url1' AND ps.property_status_url='$url2' AND pd.builders_id = '$builders_id'
+// ct.city_url='$url1' AND br.bed_rooms_url='$url2'------done---------
+// ct.city_url='$url1' AND pt.property_types_url='$url2'
+// ct.city_url='$url1' AND ps.property_status_url='$url2'
 
 
 if (!empty($footer_builders_list)) {

@@ -18,7 +18,7 @@ $countSingle_urlProjects = mysqli_query($db_connect, "
   SELECT count(pd.project_id) AS countPropertTypeProjects
   FROM project_detail AS pd, builders_list AS bl, country AS cr, state AS st, city AS ct, area AS ar, unit_types AS ut, property_types AS pt, property_status AS ps
   WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id
-  AND pt.property_types_url='$single_url' AND pd.builders_id = '$builders_id' ");
+  AND pt.property_types_url='$single_url' ");
 while ($row = mysqli_fetch_array($countSingle_urlProjects)) {
   $noOfProjects = $row['countPropertTypeProjects'];
   $totalPages = ceil($noOfProjects / $limit_per_page);
@@ -28,7 +28,7 @@ $select_single_url_projects = mysqli_query($db_connect, "
   SELECT *
   FROM project_detail AS pd, builders_list AS bl, country AS cr, state AS st, city AS ct, area AS ar, unit_types AS ut, property_types AS pt, property_status AS ps
   WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id
-  AND pt.property_types_url='$single_url' AND pd.builders_id = '$builders_id' ORDER BY project_name ASC LIMIT $starting_from , $limit_per_page ");
+  AND pt.property_types_url='$single_url' ORDER BY project_name ASC LIMIT $starting_from , $limit_per_page ");
 if (mysqli_num_rows($select_single_url_projects) >= 1) {
   $resultArray = array();
   while ($row = mysqli_fetch_array($select_single_url_projects)) {
@@ -42,7 +42,7 @@ if (mysqli_num_rows($select_single_url_projects) >= 1) {
   // ====Footer Selection By Property Types===
 
   $inHeading = "";
-  $footer_builders_list = mysqli_query($db_connect, "SELECT bl.builders_id,bl.builders_name, bl.builders_url FROM project_detail AS pd,builders_list AS bl, state AS st, city AS ct, property_types AS pt, property_status AS ps WHERE pd.builders_id=bl.builders_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id  AND pt.property_types_url='$single_url' AND pd.builders_id = '$builders_id'  GROUP BY bl.builders_name ");
+  $footer_builders_list = mysqli_query($db_connect, "SELECT bl.builders_id,bl.builders_name, bl.builders_url FROM project_detail AS pd,builders_list AS bl, state AS st, city AS ct, property_types AS pt, property_status AS ps WHERE pd.builders_id=bl.builders_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id  AND pt.property_types_url='$single_url'  GROUP BY bl.builders_name ");
   $ftRecBuildersArray = array();
   while ($row = mysqli_fetch_array($footer_builders_list)) {
     $ftRecBuildersArray[] = $row;
@@ -50,7 +50,7 @@ if (mysqli_num_rows($select_single_url_projects) >= 1) {
 
   $select_bed_rooms = mysqli_query($db_connect, "SELECT br.bed_rooms_name, br.bed_rooms_url, st.state_name, ct.city_name, ct.city_url
     FROM project_detail AS pd, bed_rooms AS br, unit_configuration AS uc, state AS st, city AS ct, property_types AS pt
-    WHERE pd.project_id=uc.project_id AND br.bed_rooms_id=uc.unit_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.property_types_id=pt.property_types_id AND pt.property_types_url='$single_url' AND pd.builders_id = '$builders_id'  GROUP BY br.bed_rooms_name ORDER BY bed_rooms_id ASC");
+    WHERE pd.project_id=uc.project_id AND br.bed_rooms_id=uc.unit_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.property_types_id=pt.property_types_id AND pt.property_types_url='$single_url'  GROUP BY br.bed_rooms_name ORDER BY bed_rooms_id ASC");
   $ftRecBhkInCityArray = array();
   while ($row = mysqli_fetch_array($select_bed_rooms)) {
     $ftRecBhkInCityArray[] = $row;
@@ -87,7 +87,7 @@ else if (mysqli_num_rows($select_single_url_projects) <= 0) {
     SELECT count(pd.project_id) AS countPropertTypeProjects
     FROM project_detail AS pd, builders_list AS bl, country AS cr, state AS st, city AS ct, area AS ar, unit_types AS ut, property_types AS pt, property_status AS ps
     WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id
-    AND ps.property_status_url='$single_url' AND pd.builders_id = '$builders_id' ");
+    AND ps.property_status_url='$single_url' ");
   while ($row = mysqli_fetch_array($countSingle_urlProjects)) {
     $noOfProjects = $row['countPropertTypeProjects'];
     $totalPages = ceil($noOfProjects / $limit_per_page);
@@ -97,7 +97,7 @@ else if (mysqli_num_rows($select_single_url_projects) <= 0) {
     SELECT *
     FROM project_detail AS pd, builders_list AS bl, country AS cr, state AS st, city AS ct, area AS ar, unit_types AS ut, property_types AS pt, property_status AS ps
     WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id
-    AND ps.property_status_url='$single_url' AND pd.builders_id = '$builders_id' ORDER BY project_name ASC LIMIT $starting_from , $limit_per_page ");
+    AND ps.property_status_url='$single_url' ORDER BY project_name ASC LIMIT $starting_from , $limit_per_page ");
   if (mysqli_num_rows($select_single_url_projects) >= 1) {
     $resultArray = array();
     while ($row = mysqli_fetch_array($select_single_url_projects)) {
@@ -113,7 +113,7 @@ else if (mysqli_num_rows($select_single_url_projects) <= 0) {
     $inHeading = "By " . $row['builders_name'];
     $footer_builders_list = mysqli_query($db_connect, "SELECT bl.builders_id,bl.builders_name, bl.builders_url
       FROM project_detail AS pd,builders_list AS bl, state AS st, city AS ct, property_status AS ps
-      WHERE pd.builders_id=bl.builders_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.property_status_id=ps.property_status_id AND ps.property_status_url='$single_url' AND pd.builders_id = '$builders_id' GROUP BY bl.builders_name ");
+      WHERE pd.builders_id=bl.builders_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.property_status_id=ps.property_status_id AND ps.property_status_url='$single_url' GROUP BY bl.builders_name ");
     $ftRecBuildersArray = array();
     while ($row = mysqli_fetch_array($footer_builders_list)) {
       $ftRecBuildersArray[] = $row;
@@ -121,7 +121,7 @@ else if (mysqli_num_rows($select_single_url_projects) <= 0) {
 
     $select_bed_rooms = mysqli_query($db_connect, "SELECT br.bed_rooms_name, br.bed_rooms_url, st.state_name, ct.city_name, ct.city_url
       FROM project_detail AS pd, bed_rooms AS br, unit_configuration AS uc, state AS st, city AS ct, property_status AS ps
-      WHERE pd.project_id=uc.project_id AND br.bed_rooms_id=uc.unit_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.property_status_id=ps.property_status_id AND ps.property_status_url='$single_url' AND pd.builders_id = '$builders_id' GROUP BY br.bed_rooms_name ORDER BY bed_rooms_id ASC");
+      WHERE pd.project_id=uc.project_id AND br.bed_rooms_id=uc.unit_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.property_status_id=ps.property_status_id AND ps.property_status_url='$single_url' GROUP BY br.bed_rooms_name ORDER BY bed_rooms_id ASC");
     $ftRecBhkInCityArray = array();
     while ($row = mysqli_fetch_array($select_bed_rooms)) {
       $ftRecBhkInCityArray[] = $row;
@@ -158,7 +158,7 @@ else if (mysqli_num_rows($select_single_url_projects) <= 0) {
       SELECT count(pd.project_id) AS countPropertTypeProjects
       FROM project_detail AS pd, builders_list AS bl, country AS cr, state AS st, city AS ct, area AS ar, unit_types AS ut, property_types AS pt, property_status AS ps
       WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id
-      AND ct.city_url='$single_url' AND pd.builders_id = '$builders_id' ");
+      AND ct.city_url='$single_url' ");
     while ($row = mysqli_fetch_array($countSingle_urlProjects)) {
       $noOfProjects = $row['countPropertTypeProjects'];
       $totalPages = ceil($noOfProjects / $limit_per_page);
@@ -168,7 +168,7 @@ else if (mysqli_num_rows($select_single_url_projects) <= 0) {
       SELECT *
       FROM project_detail AS pd, builders_list AS bl, country AS cr, state AS st, city AS ct, area AS ar, unit_types AS ut, property_types AS pt, property_status AS ps
       WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id
-      AND ct.city_url='$single_url' AND pd.builders_id = '$builders_id' ORDER BY project_name ASC LIMIT $starting_from , $limit_per_page ");
+      AND ct.city_url='$single_url' ORDER BY project_name ASC LIMIT $starting_from , $limit_per_page ");
     if (mysqli_num_rows($select_single_url_projects) >= 1) {
       $resultArray = array();
       while ($row = mysqli_fetch_array($select_single_url_projects)) {
@@ -184,7 +184,7 @@ else if (mysqli_num_rows($select_single_url_projects) <= 0) {
       $inHeading = " in " . $row['city_name'];
       $footer_builders_list = mysqli_query($db_connect, "SELECT bl.builders_id,bl.builders_name, bl.builders_url
         FROM project_detail AS pd,builders_list AS bl, state AS st, city AS ct
-        WHERE pd.builders_id=bl.builders_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND ct.city_url='$single_url' AND pd.builders_id = '$builders_id' GROUP BY bl.builders_name");
+        WHERE pd.builders_id=bl.builders_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND ct.city_url='$single_url' GROUP BY bl.builders_name");
       $ftRecBuildersArray = array();
       while ($row = mysqli_fetch_array($footer_builders_list)) {
         $ftRecBuildersArray[] = $row;
@@ -192,14 +192,14 @@ else if (mysqli_num_rows($select_single_url_projects) <= 0) {
 
       $select_bed_rooms = mysqli_query($db_connect, "SELECT br.bed_rooms_name, br.bed_rooms_url, st.state_name, ct.city_name, ct.city_url
         FROM project_detail AS pd, bed_rooms AS br, unit_configuration AS uc, state AS st, city AS ct
-        WHERE pd.project_id=uc.project_id AND br.bed_rooms_id=uc.unit_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND ct.city_url='$single_url' AND pd.builders_id = '$builders_id' GROUP BY br.bed_rooms_name ORDER BY bed_rooms_id ASC");
+        WHERE pd.project_id=uc.project_id AND br.bed_rooms_id=uc.unit_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND ct.city_url='$single_url' GROUP BY br.bed_rooms_name ORDER BY bed_rooms_id ASC");
       $ftRecBhkInCityArray = array();
       while ($row = mysqli_fetch_array($select_bed_rooms)) {
         $ftRecBhkInCityArray[] = $row;
       }
       $bhkPropTypes = mysqli_query($db_connect, "SELECT br.bed_rooms_name, br.bed_rooms_url, ct.city_name, ct.city_url, pt.property_types_name, pt.property_types_url
         FROM project_detail AS pd, property_types AS pt, bed_rooms AS br, state AS st, city AS ct
-        WHERE pd.property_types_id=pt.property_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND ct.city_url='$single_url' AND pd.builders_id = '$builders_id' AND pt.property_types_name!='Plot' GROUP BY pt.property_types_name, br.bed_rooms_name ORDER BY pt.property_types_id, br.bed_rooms_id ");
+        WHERE pd.property_types_id=pt.property_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND ct.city_url='$single_url' AND pt.property_types_name!='Plot' GROUP BY pt.property_types_name, br.bed_rooms_name ORDER BY pt.property_types_id, br.bed_rooms_id ");
       $ftRecBhkWithPropTypesInCityArray = array();
       while ($row = mysqli_fetch_array($bhkPropTypes)) {
         $ftRecBhkWithPropTypesInCityArray[] = $row;
@@ -207,7 +207,7 @@ else if (mysqli_num_rows($select_single_url_projects) <= 0) {
 
       $propertyTypes1 = mysqli_query($db_connect, "SELECT pt.property_types_name, pt.property_types_url, st.state_name, ct.city_name, ct.city_url 
         FROM project_detail AS pd,property_types AS pt, state AS st, city AS ct
-        WHERE pd.property_types_id=pt.property_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND ct.city_url='$single_url' AND pd.builders_id = '$builders_id' GROUP BY pt.property_types_name ");
+        WHERE pd.property_types_id=pt.property_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND ct.city_url='$single_url' GROUP BY pt.property_types_name ");
       $ftRecPropTypesInCityArray = array();
       while ($row = mysqli_fetch_array($propertyTypes1)) {
         $ftRecPropTypesInCityArray[] = $row;
@@ -229,7 +229,7 @@ else if (mysqli_num_rows($select_single_url_projects) <= 0) {
         SELECT count(pd.project_id) AS countPropertTypeProjects, bl.completed_projects
         FROM project_detail AS pd, builders_list AS bl, country AS cr, state AS st, city AS ct, area AS ar, unit_types AS ut, property_types AS pt, property_status AS ps
         WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id
-        AND bl.builders_url='$single_url' AND pd.builders_id = '$builders_id' ");
+        AND bl.builders_url='$single_url' ");
       while ($row = mysqli_fetch_array($countSingle_urlProjects)) {
         $noOfProjects = $row['countPropertTypeProjects'];
         $totalPages = ceil($noOfProjects / $limit_per_page);
@@ -240,7 +240,7 @@ else if (mysqli_num_rows($select_single_url_projects) <= 0) {
         SELECT *
         FROM project_detail AS pd, builders_list AS bl, country AS cr, state AS st, city AS ct, area AS ar, unit_types AS ut, property_types AS pt, property_status AS ps
         WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id
-        AND bl.builders_url='$single_url' AND pd.builders_id = '$builders_id' ORDER BY project_name ASC LIMIT $starting_from , $limit_per_page ");
+        AND bl.builders_url='$single_url' ORDER BY project_name ASC LIMIT $starting_from , $limit_per_page ");
       if (mysqli_num_rows($select_single_url_projects) >= 1) {
         $resultArray = array();
         while ($row = mysqli_fetch_array($select_single_url_projects)) {
@@ -253,7 +253,7 @@ else if (mysqli_num_rows($select_single_url_projects) <= 0) {
 
         // --- start builders footer  ---
         $inHeading = "By " . $row['builders_name'];
-        $footer_builders_list = mysqli_query($db_connect, "SELECT * FROM builders_list WHERE builders_url='$single_url' AND pd.builders_id = '$builders_id' ");
+        $footer_builders_list = mysqli_query($db_connect, "SELECT * FROM builders_list WHERE builders_url='$single_url' ");
         $ftRecBuildersArray = array();
         while ($row = mysqli_fetch_array($footer_builders_list)) {
           $ftRecBuildersArray[] = $row;
@@ -261,7 +261,7 @@ else if (mysqli_num_rows($select_single_url_projects) <= 0) {
 
         $select_bed_rooms = mysqli_query($db_connect, "SELECT br.bed_rooms_name, br.bed_rooms_url, st.state_name, ct.city_name, ct.city_url
           FROM project_detail AS pd, builders_list AS bl, bed_rooms AS br, unit_configuration AS uc, state AS st, city AS ct, property_types AS pt
-          WHERE pd.builders_id=bl.builders_id AND pd.project_id=uc.project_id AND br.bed_rooms_id=uc.unit_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.property_types_id=pt.property_types_id AND bl.builders_url='$single_url' AND pd.builders_id = '$builders_id'  GROUP BY br.bed_rooms_name ORDER BY bed_rooms_id ASC");
+          WHERE pd.builders_id=bl.builders_id AND pd.project_id=uc.project_id AND br.bed_rooms_id=uc.unit_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.property_types_id=pt.property_types_id AND bl.builders_url='$single_url'  GROUP BY br.bed_rooms_name ORDER BY bed_rooms_id ASC");
         $ftRecBhkInCityArray = array();
         while ($row = mysqli_fetch_array($select_bed_rooms)) {
           $ftRecBhkInCityArray[] = $row;
@@ -276,13 +276,13 @@ else if (mysqli_num_rows($select_single_url_projects) <= 0) {
 
         $propertyTypes1 = mysqli_query($db_connect, "SELECT pt.property_types_name, pt.property_types_url, st.state_name, ct.city_name, ct.city_url 
         FROM project_detail AS pd,property_types AS pt, state AS st, city AS ct
-        WHERE pd.property_types_id=pt.property_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND ct.city_url='$single_url' AND pd.builders_id = '$builders_id' GROUP BY pt.property_types_name ");
+        WHERE pd.property_types_id=pt.property_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND ct.city_url='$single_url' GROUP BY pt.property_types_name ");
         $ftRecPropTypesInCityArray = array();
         while ($row = mysqli_fetch_array($propertyTypes1)) {
           $ftRecPropTypesInCityArray[] = $row;
         }
 
-        $fetchCityWithArea = mysqli_query($db_connect, "SELECT * FROM area AS ar, city AS ct, state As st WHERE ar.city_id=ct.city_id AND ct.state_id=st.state_id AND ct.city_url='$single_url' AND pd.builders_id = '$builders_id' ");
+        $fetchCityWithArea = mysqli_query($db_connect, "SELECT * FROM area AS ar, city AS ct, state As st WHERE ar.city_id=ct.city_id AND ct.state_id=st.state_id AND ct.city_url='$single_url' ");
         $ftRecCityWithAreaArray = array();
         while ($row = mysqli_fetch_array($fetchCityWithArea)) {
           $ftRecCityWithAreaArray[] = $row;
@@ -297,7 +297,7 @@ else if (mysqli_num_rows($select_single_url_projects) <= 0) {
           SELECT count(pd.project_id) AS countPropertTypeProjects
           FROM project_detail AS pd, builders_list AS bl, country AS cr, state AS st, city AS ct, area AS ar, unit_types AS ut, property_types AS pt, property_status AS ps
           WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id
-          AND st.state_url='$single_url' AND pd.builders_id = '$builders_id' ");
+          AND st.state_url='$single_url' ");
         while ($row = mysqli_fetch_array($countSingle_urlProjects)) {
           $noOfProjects = $row['countPropertTypeProjects'];
           $totalPages = ceil($noOfProjects / $limit_per_page);
@@ -307,7 +307,7 @@ else if (mysqli_num_rows($select_single_url_projects) <= 0) {
           SELECT *
           FROM project_detail AS pd, builders_list AS bl, country AS cr, state AS st, city AS ct, area AS ar, unit_types AS ut, property_types AS pt, property_status AS ps
           WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id
-          AND st.state_url='$single_url' AND pd.builders_id = '$builders_id' ORDER BY project_name ASC LIMIT $starting_from , $limit_per_page ");
+          AND st.state_url='$single_url' ORDER BY project_name ASC LIMIT $starting_from , $limit_per_page ");
         if (mysqli_num_rows($select_single_url_projects) >= 1) {
           $resultArray = array();
           while ($row = mysqli_fetch_array($select_single_url_projects)) {
@@ -320,7 +320,7 @@ else if (mysqli_num_rows($select_single_url_projects) <= 0) {
 
           // ---  start state footer ---
           $inHeading = " in " . $row['state_name'];
-          $footer_builders_list = mysqli_query($db_connect, "SELECT bl.builders_id,bl.builders_name, bl.builders_url, city_name FROM project_detail AS pd,builders_list AS bl, state AS st, city AS ct WHERE pd.builders_id=bl.builders_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND st.state_url='$single_url' AND pd.builders_id = '$builders_id' GROUP BY bl.builders_name ");
+          $footer_builders_list = mysqli_query($db_connect, "SELECT bl.builders_id,bl.builders_name, bl.builders_url, city_name FROM project_detail AS pd,builders_list AS bl, state AS st, city AS ct WHERE pd.builders_id=bl.builders_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND st.state_url='$single_url' GROUP BY bl.builders_name ");
           $ftRecBuildersArray = array();
           while ($row = mysqli_fetch_array($footer_builders_list)) {
             $ftRecBuildersArray[] = $row;
@@ -328,7 +328,7 @@ else if (mysqli_num_rows($select_single_url_projects) <= 0) {
 
           $select_bed_rooms = mysqli_query($db_connect, "SELECT br.bed_rooms_name, br.bed_rooms_url, st.state_name, ct.city_name, ct.city_url
             FROM project_detail AS pd, bed_rooms AS br, unit_configuration AS uc, state AS st, city AS ct
-            WHERE pd.project_id=uc.project_id AND br.bed_rooms_id=uc.unit_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND st.state_url='$single_url' AND pd.builders_id = '$builders_id'  GROUP BY br.bed_rooms_name ORDER BY bed_rooms_id ASC");
+            WHERE pd.project_id=uc.project_id AND br.bed_rooms_id=uc.unit_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND st.state_url='$single_url'  GROUP BY br.bed_rooms_name ORDER BY bed_rooms_id ASC");
           $ftRecBhkInCityArray = array();
           while ($row = mysqli_fetch_array($select_bed_rooms)) {
             $ftRecBhkInCityArray[] = $row;
@@ -336,7 +336,7 @@ else if (mysqli_num_rows($select_single_url_projects) <= 0) {
 
           $bhkPropTypes = mysqli_query($db_connect, "SELECT br.bed_rooms_name, br.bed_rooms_url, ct.city_name, ct.city_url, pt.property_types_name, pt.property_types_url
             FROM project_detail AS pd, property_types AS pt, bed_rooms AS br, state AS st, city AS ct
-            WHERE pd.property_types_id=pt.property_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND st.state_url='$single_url' AND pd.builders_id = '$builders_id' AND pt.property_types_name!='Plot' GROUP BY pt.property_types_name, br.bed_rooms_name ORDER BY pt.property_types_id, br.bed_rooms_id ");
+            WHERE pd.property_types_id=pt.property_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND st.state_url='$single_url' AND pt.property_types_name!='Plot' GROUP BY pt.property_types_name, br.bed_rooms_name ORDER BY pt.property_types_id, br.bed_rooms_id ");
           $ftRecBhkWithPropTypesInCityArray = array();
           while ($row = mysqli_fetch_array($bhkPropTypes)) {
             $ftRecBhkWithPropTypesInCityArray[] = $row;
@@ -344,13 +344,13 @@ else if (mysqli_num_rows($select_single_url_projects) <= 0) {
 
           $propertyTypes1 = mysqli_query($db_connect, "SELECT pt.property_types_name, pt.property_types_url, st.state_name, ct.city_name, ct.city_url 
             FROM project_detail AS pd,property_types AS pt, state AS st, city AS ct
-            WHERE pd.property_types_id=pt.property_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND st.state_url='$single_url' AND pd.builders_id = '$builders_id' GROUP BY pt.property_types_name ");
+            WHERE pd.property_types_id=pt.property_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND st.state_url='$single_url' GROUP BY pt.property_types_name ");
           $ftRecPropTypesInCityArray = array();
           while ($row = mysqli_fetch_array($propertyTypes1)) {
             $ftRecPropTypesInCityArray[] = $row;
           }
 
-          $fetchCityWithArea = mysqli_query($db_connect, "SELECT * FROM area AS ar, city AS ct, state As st WHERE ar.city_id=ct.city_id AND ct.state_id=st.state_id AND st.state_url='$single_url' AND pd.builders_id = '$builders_id' ");
+          $fetchCityWithArea = mysqli_query($db_connect, "SELECT * FROM area AS ar, city AS ct, state As st WHERE ar.city_id=ct.city_id AND ct.state_id=st.state_id AND st.state_url='$single_url' ");
           $ftRecCityWithAreaArray = array();
           while ($row = mysqli_fetch_array($fetchCityWithArea)) {
             $ftRecCityWithAreaArray[] = $row;

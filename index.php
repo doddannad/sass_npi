@@ -21,12 +21,12 @@ $metaDescription = "One of India's real estate properties portal to buy properti
     <!-- Banner -->
     <div class="banner-wrapper">
         <div class="row ">
-            <div class="col-12 col-sm-12 col-md-8 col-lg-9 order-0 order-sm-0 order-md-1 banner">
+            <div class="col-12 col-sm-12 banner">
                 <div class="banner-inner">
                     <img alt="Banner Image" class="lozad" data-src="assets/images/img/npd-banner-fade.jpg">
                 </div>
             </div>
-            <div class="col-12 col-sm-12 col-md-4 col-lg-3 order-1 order-sm-1 order-md-0 form">
+            <!-- <div class="col-12 col-sm-12 col-md-4 col-lg-3 order-1 order-sm-1 order-md-0 form">
                 <form method="post" action="project_inquiry.php" id="myForm">
                     <h5 class="contact-head mb-3">Contact Builders Directly</h5>
                     <div class="mb-3">
@@ -62,103 +62,13 @@ $metaDescription = "One of India's real estate properties portal to buy properti
                         <button class="btn btn-outline-danger" type="submit" name="submit_inquiry">Submit</button>
                     </div>
                 </form>
-            </div>
+            </div> -->
 
         </div>
     </div>
     <!-- ./ Banner -->
 
-    <!-- Guide to Book -->
-    <!-- <section class="section guide-to-book">
-        <div class="container">
-            <div class="section-title">
-                <h2 class="title">Guide to Book</h2>
-            </div>
-            <div class="guide-to-book-wrapper">
-                <div class="guide-to-book-box">
-                    <div class="guide-box">
-                        <div class="guide-box-head">
-                            <i class="fa fa-home"></i>
-                            <h4 class="guide-title">Search and Sort List</h4>
-                        </div>
-                        <div class="guide-box-body">
-                            <div class="guide-description">
-                                <p>Verified properties from top builders</p>
-                            </div>
-                            <div class="guide-button">
-                                <button class="btn btn-sm btn-outline-secondary" role="button" data-bs-toggle="modal" data-bs-target="#modalSortList"><i class="fa fa-caret-right"></i>Get in Touch</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="guide-to-book-box">
-                    <div class="guide-box">
-                        <div class="guide-box-head">
-                            <i class="fa fa-car"></i>
-                            <h4 class="guide-title">Site Visit</h4>
-                        </div>
-                        <div class="guide-box-body">
-                            <div class="guide-description">
-                                <p>Making site Visit easier</p>
-                            </div>
-                            <div class="guide-button">
-                                <button class="btn btn-sm btn-outline-secondary" role="button" data-bs-toggle="modal" data-bs-target="#modalBookSiteVisit"><i class="fa fa-car"></i>Book a site visit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="guide-to-book-box">
-                    <div class="guide-box">
-                        <div class="guide-box-head">
-                            <i class="fa fa-rupee-sign"></i>
-                            <h4 class="guide-title">Home Loan Assistance</h4>
-                        </div>
-                        <div class="guide-box-body">
-                            <div class="guide-description">
-                                <p>Home loans from major banks</p>
-                            </div>
-                            <div class="guide-button">
-                                <button class="btn btn-sm btn-outline-secondary" role="button" data-bs-toggle="modal" data-bs-target="#modalHomeLoanAssist"><i class="fas fa-paper-plane"></i>Apply home loan</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="guide-to-book-box">
-                    <div class="guide-box">
-                        <div class="guide-box-head">
-                            <i class="fas fa-balance-scale"></i>
-                            <h4 class="guide-title">Legal Advice</h4>
-                        </div>
-                        <div class="guide-box-body">
-                            <div class="guide-description">
-                                <p>Verified documents and legal support</p>
-                            </div>
-                            <div class="guide-button">
-                                <button class="btn btn-sm btn-outline-secondary" role="button" data-bs-toggle="modal" data-bs-target="#modalLegalAdvice"><i class="fa fa-caret-right"></i>Text</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="guide-to-book-box">
-                    <div class="guide-box">
-                        <div class="guide-box-head">
-                            <i class="fa fa-key"></i>
-                            <h4 class="guide-title">Unit Booking</h4>
-                        </div>
-                        <div class="guide-box-body">
-                            <div class="guide-description">
-                                <p>Dedicated Relationship Manager throughout the process</p>
-                            </div>
-                            <div class="guide-button">
-                                <button class="btn btn-sm btn-outline-secondary" role="button" data-bs-toggle="modal" data-bs-target="#modalUnitBook"><i class="fa fa-caret-right"></i>Get in toucht</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- ./ Guide to Book -->
+    
     <!-- Cities -->
     <section class="section city-wrapper">
         <div class="container">

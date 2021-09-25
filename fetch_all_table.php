@@ -16,11 +16,11 @@ $select_limi_blogs = "SELECT * FROM blogs LIMIT 6";
 $blogsLimitArray = $db_connect->query($select_limi_blogs);
 
 // SELECT builders_list
-$select_builders_list = "SELECT * FROM builders_list WHERE builders_id = '$builders_id' ";
+$select_builders_list = "SELECT * FROM builders_list ";
 $buildersArray = $db_connect->query($select_builders_list);
 
 // SELECT city
-$select_city = "SELECT * FROM project_detail AS pd,  city AS ct WHERE pd.city_id = ct.city_id AND pd.builders_id = '$builders_id' GROUP BY ct.city_id ";
+$select_city = "SELECT * FROM city  ";
 $fetchedCity = $db_connect->query($select_city);
 $cityArray = array();
 foreach ($fetchedCity as $city) {
@@ -46,17 +46,17 @@ $priceRangeArray = $db_connect->query($select_price_range);
 $select_projects = "SELECT * FROM project_detail";
 $projectsArray = $db_connect->query($select_projects);
 
-$select_latest_projects = "SELECT * FROM project_detail AS pd, country AS cr,state AS st,city AS ct,area AS ar,unit_types AS ut,property_types AS pt,property_status AS ps WHERE pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND pd.builders_id = '$builders_id' ORDER BY created_date DESC LIMIT 12";
+$select_latest_projects = "SELECT * FROM project_detail AS pd, country AS cr,state AS st,city AS ct,area AS ar,unit_types AS ut,property_types AS pt,property_status AS ps WHERE pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id ORDER BY created_date DESC LIMIT 12";
 $latestProjectsArray = $db_connect->query($select_latest_projects);
 
-$select_hot_projects = "SELECT * FROM project_detail AS pd, country AS cr,state AS st,city AS ct,area AS ar,unit_types AS ut,property_types AS pt,property_status AS ps WHERE pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND pd.builders_id = '$builders_id' ORDER BY RAND() LIMIT 12";
+$select_hot_projects = "SELECT * FROM project_detail AS pd, country AS cr,state AS st,city AS ct,area AS ar,unit_types AS ut,property_types AS pt,property_status AS ps WHERE pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id ORDER BY RAND() LIMIT 12";
 $hotProjectsArray = $db_connect->query($select_hot_projects);
 
-$select_featured_projects = "SELECT * FROM recommended_properties AS rcm, project_detail AS pd,country AS cr,state AS st,city AS ct,area AS ar,unit_types AS ut,property_types AS pt,property_status AS ps WHERE rcm.project_id=pd.project_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND pd.builders_id = '$builders_id' ";
+$select_featured_projects = "SELECT * FROM recommended_properties AS rcm, project_detail AS pd,country AS cr,state AS st,city AS ct,area AS ar,unit_types AS ut,property_types AS pt,property_status AS ps WHERE rcm.project_id=pd.project_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id ";
 $featuredProjectsArray = $db_connect->query($select_featured_projects);
 
 
-$select_project_detail = "SELECT * FROM project_detail AS pd,builders_list AS bl,country AS cr,state AS st,city AS ct,area AS ar,unit_types AS ut,property_types AS pt,property_status AS ps WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id AND pd.builders_id = '$builders_id'";
+$select_project_detail = "SELECT * FROM project_detail AS pd,builders_list AS bl,country AS cr,state AS st,city AS ct,area AS ar,unit_types AS ut,property_types AS pt,property_status AS ps WHERE pd.builders_id=bl.builders_id AND pd.country_id=cr.country_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.area_id=ar.area_id AND pd.unit_types_id=ut.unit_types_id AND pd.property_types_id=pt.property_types_id AND pd.property_status_id=ps.property_status_id";
 
 
 // SELECT property_status
@@ -91,7 +91,7 @@ $ftRecBuildersArray = $buildersArray;
 $select_bed_rooms = mysqli_query($db_connect, "
 	SELECT br.bed_rooms_name, br.bed_rooms_url, st.state_name, ct.city_name, ct.city_url
 	FROM project_detail AS pd, bed_rooms AS br, unit_configuration AS uc, state AS st, city AS ct, property_types AS pt
-	WHERE pd.project_id=uc.project_id AND br.bed_rooms_id=uc.unit_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.property_types_id=pt.property_types_id GROUP BY ct.city_name, br.bed_rooms_name AND pd.builders_id = '$builders_id' ORDER BY bed_rooms_id ASC");
+	WHERE pd.project_id=uc.project_id AND br.bed_rooms_id=uc.unit_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.property_types_id=pt.property_types_id GROUP BY ct.city_name, br.bed_rooms_name ORDER BY bed_rooms_id ASC");
 $ftRecBhkInCityArray = array();
 while ($row = mysqli_fetch_array($select_bed_rooms)) {
 	$ftRecBhkInCityArray[] = $row;
@@ -100,14 +100,14 @@ while ($row = mysqli_fetch_array($select_bed_rooms)) {
 $bhkPropTypes = mysqli_query($db_connect, "
 	SELECT br.bed_rooms_name, br.bed_rooms_url, ct.city_name, ct.city_url, pt.property_types_name, pt.property_types_url
 	FROM project_detail AS pd, property_types AS pt, bed_rooms AS br, state AS st, city AS ct
-	WHERE pd.property_types_id=pt.property_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pt.property_types_name!='Plot' GROUP BY pt.property_types_name, br.bed_rooms_name, ct.city_name AND pd.builders_id = '$builders_id' ORDER BY ct.city_name, br.bed_rooms_id, pt.property_types_id ");
+	WHERE pd.property_types_id=pt.property_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pt.property_types_name!='Plot' GROUP BY pt.property_types_name, br.bed_rooms_name, ct.city_name ORDER BY ct.city_name, br.bed_rooms_id, pt.property_types_id ");
 $ftRecBhkWithPropTypesInCityArray = array();
 while ($row = mysqli_fetch_array($bhkPropTypes)) {
 	$ftRecBhkWithPropTypesInCityArray[] = $row;
 }
 $propertyTypes1 = mysqli_query($db_connect, "SELECT pt.property_types_name, pt.property_types_url, st.state_name, ct.city_name, ct.city_url 
 	FROM project_detail AS pd,property_types AS pt, state AS st, city AS ct
-	WHERE pd.property_types_id=pt.property_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id AND pd.builders_id = '$builders_id' GROUP BY ct.city_name ");
+	WHERE pd.property_types_id=pt.property_types_id AND pd.state_id=st.state_id AND pd.city_id=ct.city_id GROUP BY ct.city_name ");
 $ftRecPropTypesInCityArray = array();
 while ($row = mysqli_fetch_array($propertyTypes1)) {
 	$ftRecPropTypesInCityArray[] = $row;

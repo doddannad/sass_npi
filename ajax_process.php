@@ -3,7 +3,7 @@ include 'db_config.php';
 // Start Suggesstions
 if (!empty($_POST['chosedCity'])) {
 	$chosedCityName = $_POST['chosedCity'];
-	$fetchSuggesstionProjects = "SELECT * FROM project_detail AS pd, city AS ct WHERE pd.city_id = ct.city_id AND ct.city_name = '$chosedCityName' AND pd.builders_id = '$builders_id' ";
+	$fetchSuggesstionProjects = "SELECT * FROM project_detail AS pd, city AS ct WHERE pd.city_id = ct.city_id AND ct.city_name = '$chosedCityName' ";
 	$suggesstionProjectsArray = $db_connect->query($fetchSuggesstionProjects);
 	foreach ($suggesstionProjectsArray as $suggesstionProjects) { ?>
 		<option value="<?php echo $suggesstionProjects['project_name'] ?>"><?php echo $suggesstionProjects['project_name'] ?>, <?php echo $suggesstionProjects['project_location'] ?></option>
