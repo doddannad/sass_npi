@@ -42,7 +42,6 @@
         }
     }
     .section.listing {
-        border: 2px solid blue;
         .row {
             padding: 10px 0;
             .listing-sub,
@@ -147,6 +146,10 @@
                                         text-shadow: 0 0 $color-secondary;
                                         font-size: $font-size-sub-secondary;
                                         font-weight: $font-weight-secondary;
+                                        i {
+                                            color: #c1c1c1;
+                                            padding-right: 10px;
+                                        }
                                     }
                                     li:not(:last-child) {
                                         margin-bottom: 10px;

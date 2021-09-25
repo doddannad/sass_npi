@@ -1,0 +1,35 @@
+RewriteEngine On
+
+Options +FollowSymLinks -MultiViews
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+## Execute .php file AS .xml  Extension ##
+Rewriterule ^sitemap-php.xml$ sitemap-php.php [L]
+
+
+
+## Remove .php Extension ##
+RewriteRule ^(contact|about|faq|compare|trending-now|thank_you|404)$ $1.php [NC,L]
+
+## Property Single URL ##
+RewriteRule ^([-\w]+)/([-\w]+)/([-\w]+)/review/brouchure/floor-plan/price property-single.php?city=$1&area=$2&project_name=$3
+
+## Single URL ##
+RewriteRule ^([-\w]+)$ urls-single.php?url=$1
+
+## Double URL ##
+RewriteRule ^([-\w]+)/([-\w]+)$ urls-double.php?url1=$1&url2=$2
+
+## Four URL ##
+RewriteRule ^property/([-\w]+)/([-\w]+)/([-\w]+)$ urls-four.php?url1=$1&url2=$2&url3=$3
+
+## Blog Single URL ##
+RewriteRule ^trending-now/realestate/article/([-\w]+)$ blog-single.php?blog=$1
+
+## Hide index.php ##
+RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
+
+RewriteRule (.*?)index\.php/*(.*) /$1$2 [R=301,NE,L]

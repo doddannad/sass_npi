@@ -1,0 +1,1 @@
+[12-Jun-2021 22:19:35 Asia/Kolkata] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in /home/customer/www/brigadeproperties.in/public_html/sass_npi_dev/PHPMailer/PHPMailerAutoload.php on line 45

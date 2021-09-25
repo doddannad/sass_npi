@@ -42,19 +42,62 @@
         .row {
             margin: 0;
             .banner-wrapper {
-                .banner {
+                .banner-grid-wrap {
+                    height: 400px;
                     position: relative;
-                    height: 450px;
+                    display: grid;
+                    grid-template-columns: repeat(3, minmax(auto, 1fr));
+                    grid-template-rows: minmax(2, auto);
+                    grid-gap: 20px;
+                    grid-auto-flow: dense;
                     @media (max-width: $medium-and-down) {
-                        height: 250px;
+                        height: 300px;
                     }
-                    img {
-                        height: 100%;
-                        width: 100%;
+                    .banner {
+                        position: relative;
+                        $br-radius: 5px;
+                        .banner-img {
+                            height: 100%;
+                            border-radius: $br-radius;
+                            @extend %bg-center-cover-norepeat;
+                            .overlay {
+                                @extend %absolute;
+                                background: rgba($color: #000000, $alpha: .3);
+                                border-radius: $br-radius;
+                            }
+                        }
                     }
-                    .overlay {
-                        @extend %absolute;
-                        background: rgba($color: #000000, $alpha: .3);
+                }
+                .banner_grid_3 {
+                    .banner:nth-child(1) {
+                        grid-row: span 1;
+                        grid-column: span 1;
+                    }
+                    .banner:nth-child(2) {
+                        grid-row: span 2;
+                        grid-column: span 2;
+                    }
+                    .banner:nth-child(3) {
+                        grid-row: span 1;
+                        grid-column: span 1;
+                    }
+                }
+                .banner_grid_2 {
+                    grid-template-columns: repeat(2, minmax(auto, 1fr));
+                    .banner:nth-child(1) {
+                        grid-row: span 2;
+                        grid-column: span 1;
+                    }
+                    .banner:nth-child(2) {
+                        grid-row: span 2;
+                        grid-column: span 1;
+                    }
+                }
+                .banner_grid_1 {
+                    grid-template-columns: repeat(1, minmax(auto, 1fr));
+                    .banner:nth-child(1) {
+                        grid-row: span 2;
+                        grid-column: span 1;
                     }
                 }
             }
@@ -405,7 +448,7 @@
                 .booking-hassle-steps {
                     padding: 0;
                     margin: 0;
-                    list-style: none;
+                    list-style-position: inside;
                     li {
                         font-size: $card-font-primary;
                         font-weight: $card-font-weight-primary;

@@ -42,6 +42,90 @@
             }
         }
     }
+    .guide-to-book-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+        @media(max-width: $medium-and-down) {
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+        .guide-to-book-box {
+            padding: 10px;
+            width: 100%;
+            @media(max-width: $medium-and-down) {
+                width: auto;
+            }
+            .guide-box {
+                position: relative;
+                .guide-box-head {
+                    position: relative;
+                    border: 1px solid pink;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 15px;
+                    border-radius: $br-radius;
+                    cursor: pointer;
+                    i,
+                    .guide-title {
+                        color: #000;
+                        text-shadow: 0 0 #000;
+                    }
+                    i {
+                        font-size: $font-size-primary;
+                        font-weight: $font-weight-primary;
+                        margin-bottom: 15px;
+                    }
+                    .guide-title {
+                        font-size: $font-size-secondary;
+                        font-weight: $font-weight-secondary;
+                    }
+                }
+                .guide-box-body {
+                    border-radius: $br-radius;
+                    text-align: center;
+                    padding: 10px 0;
+                    // display: none;
+                    visibility: hidden;
+                    opacity: 0;
+                    transition: visibility 0s, opacity 0.5s linear;
+                    @media(max-width: $medium-and-down) {
+                        display: block;
+                    }
+                    .guide-description {
+                        margin-bottom: 10px;
+                        p {
+                            margin: 0;
+                            font-size: $font-size-secondary;
+                            font-weight: $font-weight-secondary;
+                        }
+                    }
+                    .guide-button {
+                        button {
+                            width: 100%;
+                            color: #000;
+                            text-shadow: 0 0 #000;
+                            font-weight: 600;
+                            i {
+                                padding-right: 10px;
+                            }
+                        }
+                        button:hover {
+                            background: $color-red;
+                            border-color: $color-red;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+            .guide-box:hover .guide-box-body {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    }
     .city-wrapper {
         .cities {
             position: relative;
@@ -321,6 +405,38 @@
             .city:nth-child(1) {
                 grid-column: span 4;
                 grid-row: span 6;
+            }
+        }
+        .cities_mobile {
+            .cities {
+                grid-template-columns: none;
+                grid-template-rows: minmax(2, auto);
+                height: 300px;
+                .city:nth-child(1) {
+                    grid-column: span 1;
+                    grid-row: span 1;
+                }
+                .city:nth-child(2) {
+                    grid-column: span 1;
+                    grid-row: span 1;
+                }
+                .city:nth-child(3) {
+                    grid-column: span 2;
+                    grid-row: span 1;
+                }
+            }
+            .cities:last-child {
+                grid-template-columns: none;
+                grid-template-rows: minmax(1, auto);
+                height: 300px;
+                .city:nth-child(1) {
+                    grid-column: span 1;
+                    grid-row: span 1;
+                }
+                .city:nth-child(2) {
+                    grid-column: span 1;
+                    grid-row: span 1;
+                }
             }
         }
     }
